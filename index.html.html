@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jefferson Daniel — Sales & Business Development</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy: #0A2352;
+    --navy-mid: #0D2E6B;
+    --navy-light: #1a3f7a;
+    --gold: #C8960C;
+    --gold-light: #E8B020;
+    --gold-pale: #FDF6E3;
+    --off-white: #F7F8FC;
+    --text: #1A1A2E;
+    --mid: #556070;
+    --light: #8A96A8;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--off-white);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10, 35, 82, 0.97);
+    backdrop-filter: blur(12px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 60px; height: 64px;
+    border-bottom: 2px solid var(--gold);
+  }
+  .nav-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 700;
+    color: #fff; letter-spacing: 0.04em;
+  }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.75); text-decoration: none;
+    font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    background: linear-gradient(145deg, var(--navy) 0%, var(--navy-mid) 55%, #0f3878 100%);
+    display: flex; align-items: center;
+    padding: 100px 60px 80px;
+    position: relative; overflow: hidden;
+  }
+  #hero::before {
+    content: '';
+    position: absolute; top: -120px; right: -120px;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,150,12,0.12) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  #hero::after {
+    content: '';
+    position: absolute; bottom: -80px; left: -80px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,150,12,0.07) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 1200px; margin: 0 auto; width: 100%; }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: rgba(200,150,12,0.15);
+    border: 1px solid rgba(200,150,12,0.4);
+    border-radius: 4px;
+    padding: 6px 16px;
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
+    color: var(--gold-light); text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+  .hero-eyebrow span { display: inline-block; width: 24px; height: 1px; background: var(--gold); }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 700; line-height: 1.06;
+    color: #fff; margin-bottom: 28px;
+  }
+  h1 em { color: var(--gold-light); font-style: normal; }
+  .hero-sub {
+    font-size: 1.05rem; color: rgba(255,255,255,0.65);
+    line-height: 1.7; max-width: 640px;
+    font-weight: 300; margin-bottom: 48px;
+  }
+  .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 14px 36px;
+    font-weight: 600; font-size: 0.85rem; letter-spacing: 0.06em;
+    text-decoration: none; text-transform: uppercase;
+    border-radius: 3px; transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-ghost {
+    border: 1.5px solid rgba(255,255,255,0.35);
+    color: rgba(255,255,255,0.8);
+    padding: 14px 36px;
+    font-weight: 500; font-size: 0.85rem; letter-spacing: 0.06em;
+    text-decoration: none; text-transform: uppercase;
+    border-radius: 3px; transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold-light); transform: translateY(-2px); }
+  .hero-markets {
+    position: absolute; right: 80px; top: 50%; transform: translateY(-50%);
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .market-tag {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-left: 3px solid var(--gold);
+    padding: 10px 20px;
+    color: rgba(255,255,255,0.7); font-size: 0.8rem;
+    font-weight: 500; letter-spacing: 0.05em;
+    border-radius: 0 3px 3px 0;
+  }
+
+  /* ── METRICS STRIP ── */
+  #metrics {
+    background: var(--navy);
+    padding: 52px 60px;
+    border-bottom: 3px solid var(--gold);
+  }
+  .metrics-grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1px; background: rgba(255,255,255,0.08);
+  }
+  .metric-box {
+    background: var(--navy);
+    padding: 36px 40px;
+    text-align: center;
+  }
+  .metric-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem; font-weight: 700;
+    color: var(--gold-light); display: block;
+    line-height: 1;
+  }
+  .metric-label {
+    color: rgba(255,255,255,0.55); font-size: 0.78rem;
+    font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; margin-top: 10px;
+    display: block;
+  }
+
+  /* ── SECTIONS GENERAL ── */
+  section { padding: 100px 60px; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--gold);
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 14px;
+  }
+  .section-label::after { content: ''; flex: 0 0 36px; height: 1.5px; background: var(--gold); }
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700;
+    color: var(--navy); line-height: 1.15; margin-bottom: 20px;
+  }
+  h2 em { color: var(--gold); font-style: normal; }
+  .section-lead {
+    font-size: 1rem; color: var(--mid); line-height: 1.8;
+    max-width: 620px; font-weight: 300;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: #fff; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .about-text p {
+    font-size: 1rem; color: var(--mid); line-height: 1.85;
+    font-weight: 300; margin-bottom: 20px;
+  }
+  .about-text p strong { color: var(--navy); font-weight: 600; }
+  .about-pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .pillar {
+    border: 1.5px solid #E8EBF5;
+    border-top: 3px solid var(--gold);
+    padding: 22px 20px;
+    border-radius: 0 0 4px 4px;
+  }
+  .pillar-title { font-weight: 600; font-size: 0.88rem; color: var(--navy); margin-bottom: 6px; }
+  .pillar-desc { font-size: 0.8rem; color: var(--light); line-height: 1.6; }
+
+  /* ── EXPERTISE ── */
+  #expertise { background: var(--off-white); }
+  .expertise-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 60px; }
+  .expertise-card {
+    background: #fff;
+    border: 1px solid #E4E8F4;
+    border-bottom: 3px solid var(--gold);
+    padding: 36px 28px;
+    border-radius: 4px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .expertise-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(10,35,82,0.1); }
+  .expertise-icon {
+    width: 44px; height: 44px; background: var(--navy);
+    border-radius: 3px; display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px; font-size: 1.2rem;
+  }
+  .expertise-card h3 {
+    font-size: 1.05rem; font-weight: 600; color: var(--navy);
+    margin-bottom: 12px;
+  }
+  .expertise-card p { font-size: 0.85rem; color: var(--mid); line-height: 1.75; }
+
+  /* ── EXPERIENCE ── */
+  #experience { background: #fff; }
+  .exp-header { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 64px; align-items: start; }
+  .exp-timeline { display: flex; flex-direction: column; gap: 0; }
+  .exp-item {
+    display: grid; grid-template-columns: 140px 1fr;
+    gap: 32px; position: relative;
+  }
+  .exp-item:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 140px; top: 0; bottom: -1px;
+    width: 1px; background: #E4E8F4;
+    transform: translateX(-50%);
+  }
+  .exp-date {
+    padding-top: 4px;
+    font-size: 0.78rem; font-weight: 600; color: var(--gold);
+    letter-spacing: 0.05em; text-align: right;
+    padding-right: 24px;
+  }
+  .exp-content {
+    padding: 0 0 48px 24px;
+    border-left: 2px solid #E4E8F4;
+    position: relative;
+  }
+  .exp-content::before {
+    content: '';
+    position: absolute; left: -5px; top: 6px;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--gold); border: 2px solid #fff;
+    box-shadow: 0 0 0 2px var(--gold);
+  }
+  .exp-company { font-size: 0.75rem; font-weight: 600; color: var(--gold); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px; }
+  .exp-role { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 700; color: var(--navy); margin-bottom: 14px; }
+  .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .exp-bullets li {
+    font-size: 0.85rem; color: var(--mid); line-height: 1.7;
+    padding-left: 16px; position: relative;
+  }
+  .exp-bullets li::before { content: '▸'; position: absolute; left: 0; color: var(--gold); font-size: 0.7rem; top: 2px; }
+  .exp-achievement {
+    margin-top: 14px;
+    background: var(--gold-pale);
+    border-left: 3px solid var(--gold);
+    padding: 10px 16px;
+    border-radius: 0 4px 4px 0;
+    font-size: 0.8rem; color: var(--navy); font-weight: 500; line-height: 1.6;
+  }
+
+  /* ── ACHIEVEMENTS ── */
+  #achievements { background: var(--off-white); }
+  .ach-intro { max-width: 640px; margin-bottom: 60px; }
+  .ach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 48px; }
+  .ach-card {
+    background: #fff;
+    border: 1px solid #E4E8F4;
+    border-radius: 4px;
+    padding: 32px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .ach-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(10,35,82,0.09); }
+  .ach-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px; background: var(--gold);
+  }
+  .ach-tag {
+    display: inline-block;
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--gold);
+    background: var(--gold-pale); border: 1px solid rgba(200,150,12,0.25);
+    padding: 3px 10px; border-radius: 3px; margin-bottom: 16px;
+  }
+  .ach-card h3 { font-size: 1rem; font-weight: 600; color: var(--navy); margin-bottom: 10px; line-height: 1.4; }
+  .ach-card p { font-size: 0.83rem; color: var(--mid); line-height: 1.75; }
+  .ach-card .ach-stat {
+    margin-top: 18px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 700; color: var(--gold-light);
+    line-height: 1;
+  }
+  .ach-card .ach-stat-label { font-size: 0.72rem; color: var(--light); font-weight: 500; margin-top: 2px; }
+  .ach-timeline { margin-top: 16px; }
+  .ach-tl-title {
+    font-size: 0.8rem; font-weight: 600; color: var(--navy);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .ach-tl-items { display: flex; flex-direction: column; gap: 14px; }
+  .ach-tl-item {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 16px 20px;
+    background: #fff; border: 1px solid #E4E8F4;
+    border-left: 3px solid var(--navy);
+    border-radius: 0 4px 4px 0;
+  }
+  .ach-tl-item .year {
+    flex: 0 0 60px; font-weight: 700; font-size: 0.78rem;
+    color: var(--gold); letter-spacing: 0.05em; padding-top: 2px;
+  }
+  .ach-tl-item .desc { font-size: 0.83rem; color: var(--mid); line-height: 1.65; }
+  .ach-tl-item .desc strong { color: var(--navy); }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--off-white); }
+  .skills-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 60px; }
+  .skill-group h3 { font-size: 0.8rem; font-weight: 600; color: var(--navy); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+  .skill-tag {
+    background: #fff; border: 1.5px solid #DDE2EE;
+    color: var(--navy); font-size: 0.78rem; font-weight: 500;
+    padding: 7px 16px; border-radius: 3px;
+    letter-spacing: 0.02em;
+  }
+  .skill-tag.gold { background: var(--navy); color: var(--gold-light); border-color: var(--navy); }
+
+  /* ── MARKETS ── */
+  #markets { background: var(--navy); }
+  #markets h2 { color: #fff; }
+  #markets .section-label { color: var(--gold-light); }
+  #markets .section-lead { color: rgba(255,255,255,0.55); }
+  .markets-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 52px; }
+  .market-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-top: 3px solid var(--gold);
+    padding: 32px 24px; text-align: center;
+    border-radius: 0 0 4px 4px;
+    transition: background 0.2s;
+  }
+  .market-card:hover { background: rgba(255,255,255,0.09); }
+  .market-flag { font-size: 2.4rem; margin-bottom: 14px; }
+  .market-name { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 6px; }
+  .market-desc { font-size: 0.78rem; color: rgba(255,255,255,0.45); line-height: 1.6; }
+
+  /* ── APPROACH ── */
+  #approach { background: #fff; }
+  .approach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-top: 60px; }
+  .approach-steps { display: flex; flex-direction: column; gap: 28px; }
+  .step {
+    display: flex; gap: 20px; align-items: flex-start;
+  }
+  .step-num {
+    flex: 0 0 40px; height: 40px;
+    background: var(--navy); color: var(--gold-light);
+    font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 700;
+    border-radius: 3px; display: flex; align-items: center; justify-content: center;
+  }
+  .step-body h4 { font-size: 0.92rem; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+  .step-body p { font-size: 0.82rem; color: var(--mid); line-height: 1.7; }
+  .approach-quote {
+    background: var(--navy);
+    padding: 48px 40px;
+    border-radius: 4px;
+    border-left: 4px solid var(--gold);
+  }
+  .approach-quote blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 400; font-style: italic;
+    color: #fff; line-height: 1.55; margin-bottom: 28px;
+  }
+  .approach-quote cite { font-size: 0.78rem; color: var(--gold-light); font-style: normal; font-weight: 600; letter-spacing: 0.08em; }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--off-white); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-top: 60px; }
+  .contact-info { display: flex; flex-direction: column; gap: 20px; }
+  .contact-row {
+    display: flex; align-items: center; gap: 16px;
+    padding: 18px 20px;
+    background: #fff; border: 1px solid #E4E8F4;
+    border-left: 3px solid var(--gold);
+    border-radius: 0 4px 4px 0;
+  }
+  .contact-row .icon { font-size: 1.1rem; }
+  .contact-row .label { font-size: 0.7rem; font-weight: 600; color: var(--light); text-transform: uppercase; letter-spacing: 0.08em; }
+  .contact-row .value { font-size: 0.88rem; color: var(--navy); font-weight: 500; }
+  .contact-form { display: flex; flex-direction: column; gap: 14px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .contact-form input, .contact-form textarea {
+    width: 100%; padding: 13px 16px;
+    border: 1.5px solid #DDE2EE; border-radius: 3px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.85rem;
+    color: var(--text); background: #fff;
+    transition: border-color 0.2s; outline: none;
+  }
+  .contact-form input:focus, .contact-form textarea:focus { border-color: var(--navy); }
+  .contact-form textarea { height: 120px; resize: vertical; }
+  .contact-form button {
+    background: var(--navy); color: #fff;
+    padding: 14px 32px; border: none; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; font-weight: 600;
+    font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase;
+    border-radius: 3px; transition: background 0.2s;
+    align-self: flex-start;
+  }
+  .contact-form button:hover { background: var(--navy-light); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    padding: 28px 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 2px solid var(--gold);
+  }
+  footer .brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-weight: 700; color: #fff;
+  }
+  footer p { font-size: 0.75rem; color: rgba(255,255,255,0.4); }
+
+  /* ── ANIMATIONS ── */
+  [data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  [data-reveal].visible { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    nav .nav-links { display: none; }
+    section { padding: 70px 24px; }
+    #hero { padding: 100px 24px 70px; }
+    .hero-markets { display: none; }
+    h1 { font-size: 2.6rem; }
+    .about-grid, .skills-layout, .approach-grid, .contact-grid, .exp-header { grid-template-columns: 1fr; gap: 40px; }
+    .metrics-grid, .markets-grid, .expertise-grid { grid-template-columns: 1fr 1fr; }
+    footer { flex-direction: column; gap: 10px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">Jefferson Daniel</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#markets">Markets</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow"><span></span> Sales & Business Development Manager</div>
+    <h1>Closing Deals.<br><em>Building Markets.</em><br>Driving Growth.</h1>
+    <p class="hero-sub">20–35 clients closed per month. 80–85% client retention rate. International markets across Africa, the UK, USA, and the Middle East. This is what structured, relationship-driven sales looks like.</p>
+    <div class="hero-cta">
+      <a href="#experience" class="btn-primary">View Experience</a>
+      <a href="#contact" class="btn-ghost">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-markets">
+    <div class="market-tag">🇳🇬 Nigeria</div>
+    <div class="market-tag">🇬🇧 United Kingdom</div>
+    <div class="market-tag">🇺🇸 United States</div>
+    <div class="market-tag">🇸🇦 Middle East</div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<div id="metrics">
+  <div class="metrics-grid">
+    <div class="metric-box">
+      <span class="metric-number">20–35</span>
+      <span class="metric-label">Clients Closed per Month</span>
+    </div>
+    <div class="metric-box">
+      <span class="metric-number">80–85%</span>
+      <span class="metric-label">Client Retention Rate</span>
+    </div>
+    <div class="metric-box">
+      <span class="metric-number">4+</span>
+      <span class="metric-label">International Markets</span>
+    </div>
+    <div class="metric-box">
+      <span class="metric-number">7+</span>
+      <span class="metric-label">Years in Sales & BD</span>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid" data-reveal>
+      <div class="about-text">
+        <div class="section-label">About Me</div>
+        <h2>Sales is not a script.<br><em>It's a system.</em></h2>
+        <p>I am a Sales and Business Development Manager with hands-on experience closing high volumes of clients consistently, across highly competitive markets. My work spans SaaS, telecommunications, and digital product sectors, with a career built on one principle: <strong>understand the customer, deliver the value, protect the relationship.</strong></p>
+        <p>Across every role I have held, I have averaged <strong>20–35 new client closures per month</strong> while maintaining an <strong>80–85% client retention rate</strong> — a combination that produces compounding, predictable revenue growth rather than one-off spikes.</p>
+        <p>I operate across international markets including Nigeria, the United Kingdom, the United States, and the Middle East, and I bring the cultural fluency and communication discipline needed to build trust across borders.</p>
+      </div>
+      <div class="about-pillars">
+        <div class="pillar">
+          <div class="pillar-title">Volume + Quality</div>
+          <div class="pillar-desc">High monthly close rates sustained by structured pipeline management, not luck.</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-title">Retention Focus</div>
+          <div class="pillar-desc">80–85% retention reflects consistent post-sale engagement and real value delivery.</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-title">Global Reach</div>
+          <div class="pillar-desc">Active sales experience across Africa, UK, USA, and Middle East markets.</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-title">Full-Cycle Ownership</div>
+          <div class="pillar-desc">From first outreach to closed deal to long-term account management.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+  <div class="section-inner">
+    <div class="section-label">What I Do</div>
+    <h2>Core <em>Expertise</em></h2>
+    <p class="section-lead">The capabilities I bring to every sales and business development engagement — proven across multiple industries and international markets.</p>
+    <div class="expertise-grid" data-reveal>
+      <div class="expertise-card">
+        <div class="expertise-icon">🎯</div>
+        <h3>Full-Cycle B2B Sales</h3>
+        <p>End-to-end ownership of the sales process — from prospecting and outbound outreach through qualification, pitching, negotiation, and contract closure. Averaging 20–35 new client closures per month across active roles.</p>
+      </div>
+      <div class="expertise-card">
+        <div class="expertise-icon">🤝</div>
+        <h3>Strategic Partnership Development</h3>
+        <p>Building and managing long-term commercial partnerships across Africa, the UK, USA, and the Middle East. Identifying the right partners, structuring agreements, and ensuring mutual value delivery.</p>
+      </div>
+      <div class="expertise-card">
+        <div class="expertise-icon">📊</div>
+        <h3>Pipeline & CRM Management</h3>
+        <p>Structuring and maintaining sales pipelines that give accurate forecasting visibility. Ensuring every lead is tracked, followed up on time, and progressed through a defined qualification framework.</p>
+      </div>
+      <div class="expertise-card">
+        <div class="expertise-icon">🔁</div>
+        <h3>Client Retention & Account Growth</h3>
+        <p>Sustaining an 80–85% client retention rate through proactive post-sale engagement, regular account reviews, and identifying expansion opportunities that keep clients delivering recurring revenue.</p>
+      </div>
+      <div class="expertise-card">
+        <div class="expertise-icon">🌍</div>
+        <h3>International Market Expansion</h3>
+        <p>Experience managing sales operations and client relationships across multiple continents and time zones. Adapting messaging, approach, and positioning for regional business cultures and decision-making styles.</p>
+      </div>
+      <div class="expertise-card">
+        <div class="expertise-icon">📈</div>
+        <h3>Revenue Growth & ROAS Optimisation</h3>
+        <p>Aligning marketing spend and sales execution to maximise return on ad spend and improve conversion rates. Translating campaign leads into paying clients through structured follow-up and qualification systems.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="exp-header">
+      <div>
+        <div class="section-label">Professional Background</div>
+        <h2>Experience That<br><em>Delivers Numbers</em></h2>
+      </div>
+      <p class="section-lead" style="padding-top: 52px;">Every role below contributed to a consistent track record — not impressive-sounding job titles, but real, measurable client acquisition and retention outcomes.</p>
+    </div>
+
+    <div class="exp-timeline" data-reveal>
+
+      <!-- SANSCRUFT — most recent -->
+      <div class="exp-item">
+        <div class="exp-date">2024 – Present</div>
+        <div class="exp-content">
+          <div class="exp-company">Sanscruft</div>
+          <div class="exp-role">Business Development Manager</div>
+          <ul class="exp-bullets">
+            <li>Own the full B2B sales cycle from prospecting and lead qualification through pitching, negotiation, contract closure, and client onboarding.</li>
+            <li>Close an average of 20–30 new clients per month, maintaining a consistent pipeline through outbound prospecting, referrals, and inbound lead conversion.</li>
+            <li>Maintain an 80%+ client retention rate through structured post-sale engagement and regular account reviews that surface upsell opportunities and prevent churn.</li>
+            <li>Manage a structured CRM pipeline ensuring accurate forecasting and timely follow-up across all active opportunities.</li>
+          </ul>
+          <div class="exp-achievement">⭐ Consistently met and exceeded monthly revenue targets through a combination of high-volume closing and strong retention — contributing to predictable, scalable revenue growth.</div>
+        </div>
+      </div>
+
+      <!-- KONECTIN — People & Relations -->
+      <div class="exp-item">
+        <div class="exp-date">2023 – 2024</div>
+        <div class="exp-content">
+          <div class="exp-company">Konectin Inc.</div>
+          <div class="exp-role">People & Relations Manager — Sales & Partnerships</div>
+          <ul class="exp-bullets">
+            <li>Developed and managed strategic B2B partnerships across Africa, the United Kingdom, and the United States, expanding the company's international client footprint across three regions.</li>
+            <li>Led structured client relationship management programmes that contributed to an 80–85% client retention rate, reducing churn through proactive engagement and value delivery.</li>
+            <li>Identified and converted high-value leads through targeted outreach strategies, qualifying opportunities and progressing them through a defined sales pipeline.</li>
+            <li>Collaborated with product and operations teams to align client expectations with service delivery, ensuring satisfaction at every stage of the customer lifecycle.</li>
+          </ul>
+          <div class="exp-achievement">⭐ Built and maintained a multi-region partnership network across 3 international markets, directly supporting revenue growth through partnership-led acquisition channels.</div>
+        </div>
+      </div>
+
+      <!-- KONECTIN — ROAS Expert / Sales Manager (same company, earlier role) -->
+      <div class="exp-item">
+        <div class="exp-date">2024</div>
+        <div class="exp-content">
+          <div class="exp-company">Konectin Inc.</div>
+          <div class="exp-role">Sales Manager / ROAS Expert</div>
+          <ul class="exp-bullets">
+            <li>Managed international customer acquisition campaigns across Nigeria, Saudi Arabia, and global markets, directly contributing to a sustained pipeline of 20–35 new client engagements per month.</li>
+            <li>Optimised marketing and sales funnels to improve conversion rates, achieving measurable improvements in return on ad spend (ROAS) across active campaigns.</li>
+            <li>Aligned sales and marketing teams around shared revenue goals, translating inbound campaign leads into qualified opportunities through structured follow-up cadences.</li>
+            <li>Built repeatable outbound engagement systems that supported consistent monthly revenue contributions across multiple product lines.</li>
+          </ul>
+          <div class="exp-achievement">⭐ Drove measurable uplift in international conversion rates, directly increasing monthly revenue contribution through cross-functional sales and marketing alignment.</div>
+        </div>
+      </div>
+
+      <!-- ELICIT — longest tenure -->
+      <div class="exp-item">
+        <div class="exp-date">2018 – 2023</div>
+        <div class="exp-content">
+          <div class="exp-company">Elicit Technology Infrastructure Limited</div>
+          <div class="exp-role">Business Development Manager</div>
+          <ul class="exp-bullets">
+            <li>Led B2B sales efforts within the telecommunications and technology infrastructure sector, engaging corporate clients across multiple Nigerian industries over a 5-year tenure.</li>
+            <li>Managed end-to-end sales cycles including prospecting, technical solution presentations, stakeholder negotiation, and contract execution.</li>
+            <li>Identified and prioritised high-value corporate accounts, building a steady pipeline that consistently delivered deal closures each month.</li>
+            <li>Established long-term client relationships that generated repeat business and referrals, reducing the cost of new client acquisition over time.</li>
+          </ul>
+          <div class="exp-achievement">⭐ Closed multiple six-figure B2B contracts with corporate clients, expanding Elicit's market share within the Nigerian telecommunications sector across a 5-year period.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="section-inner">
+    <div class="section-label">Track Record</div>
+    <h2>Key <em>Achievements</em></h2>
+    <div class="ach-intro">
+      <p class="section-lead">Not responsibilities. Not duties. These are the specific, verifiable outcomes delivered across every role — the numbers, milestones, and results that define a consistent pattern of performance.</p>
+    </div>
+
+    <!-- Achievement cards — top metrics -->
+    <div class="ach-grid" data-reveal>
+
+      <div class="ach-card">
+        <div class="ach-tag">Sales Performance</div>
+        <h3>Sustained High-Volume Client Closing Across Multiple Roles</h3>
+        <p>Consistently closed new clients at scale across Sanscruft and Konectin Inc., maintaining structured pipelines through outbound prospecting, inbound conversion, and referral channels.</p>
+        <div class="ach-stat">20–30</div>
+        <div class="ach-stat-label">New clients closed per month · Sanscruft (2024–Present)</div>
+      </div>
+
+      <div class="ach-card">
+        <div class="ach-tag">Client Retention</div>
+        <h3>80–85% Client Retention Rate Maintained Across Roles</h3>
+        <p>Implemented structured post-sale engagement, regular account reviews, and proactive relationship management that reduced churn and created consistent upsell opportunities across all positions held.</p>
+        <div class="ach-stat">80–85%</div>
+        <div class="ach-stat-label">Average retention rate across career</div>
+      </div>
+
+      <div class="ach-card">
+        <div class="ach-tag">International BD</div>
+        <h3>Multi-Region Partnership Network Built Across 3 International Markets</h3>
+        <p>At Konectin Inc., built and maintained active commercial partnerships spanning Africa, the United Kingdom, and the United States — driving partnership-led acquisition as a core revenue channel.</p>
+        <div class="ach-stat">3+</div>
+        <div class="ach-stat-label">International markets with active partnerships</div>
+      </div>
+
+      <div class="ach-card">
+        <div class="ach-tag">Revenue Growth</div>
+        <h3>Consistent Contribution to Monthly Revenue Targets</h3>
+        <p>Across every role, delivered against monthly revenue targets through a combination of high-volume deal closing and strong retention — producing predictable, compounding revenue growth without over-reliance on new acquisition.</p>
+        <div class="ach-stat">100%</div>
+        <div class="ach-stat-label">Monthly targets met or exceeded across tenure</div>
+      </div>
+
+      <div class="ach-card">
+        <div class="ach-tag">B2B Contracts</div>
+        <h3>Six-Figure B2B Contract Closures in Telecommunications</h3>
+        <p>During a 5-year tenure at Elicit Technology Infrastructure Limited, closed multiple six-figure B2B contracts with corporate clients, directly expanding the company's market share within the Nigerian telecommunications sector.</p>
+        <div class="ach-stat">5 yrs</div>
+        <div class="ach-stat-label">Sustained BD performance · Elicit Technology (2018–2023)</div>
+      </div>
+
+      <div class="ach-card">
+        <div class="ach-tag">ROAS & Conversion</div>
+        <h3>International Conversion Rate Uplift via Sales-Marketing Alignment</h3>
+        <p>As Sales Manager at Konectin Inc., drove measurable improvements in conversion rates and ROAS across campaigns spanning Nigeria, Saudi Arabia, and global markets — through cross-functional alignment between sales and marketing teams.</p>
+        <div class="ach-stat">4+</div>
+        <div class="ach-stat-label">International markets reached through ROAS campaigns</div>
+      </div>
+
+    </div>
+
+    <!-- Career Achievements Timeline -->
+    <div class="ach-timeline" data-reveal>
+      <div class="ach-tl-title">Career Milestones Timeline</div>
+      <div class="ach-tl-items">
+        <div class="ach-tl-item">
+          <div class="year">2018</div>
+          <div class="desc"><strong>Joined Elicit Technology Infrastructure Limited</strong> as Business Development Manager — began 5-year run building B2B sales capability in the Nigerian telecoms sector, closing six-figure corporate contracts.</div>
+        </div>
+        <div class="ach-tl-item">
+          <div class="year">2020</div>
+          <div class="desc"><strong>Built long-term corporate client portfolio</strong> at Elicit — established repeat-business relationships and referral networks that reduced the cost of new client acquisition significantly over time.</div>
+        </div>
+        <div class="ach-tl-item">
+          <div class="year">2023</div>
+          <div class="desc"><strong>Moved into international sales at Konectin Inc.</strong> as People & Relations Manager — expanded scope to cover partnership development across Africa, the UK, and the USA, contributing to 80–85% client retention through structured relationship management.</div>
+        </div>
+        <div class="ach-tl-item">
+          <div class="year">2024</div>
+          <div class="desc"><strong>Promoted to Sales Manager / ROAS Expert at Konectin Inc.</strong> — managed international customer acquisition across Nigeria, Saudi Arabia, and global markets, sustaining 20–35 new client engagements per month and driving measurable ROAS improvements.</div>
+        </div>
+        <div class="ach-tl-item">
+          <div class="year">2024 – Present</div>
+          <div class="desc"><strong>Business Development Manager at Sanscruft</strong> — currently closing 20–30 new clients per month, maintaining 80%+ retention, and managing a structured CRM pipeline that supports accurate forecasting and consistent revenue delivery.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-label">Capabilities</div>
+    <h2>Skills & <em>Tools</em></h2>
+    <div class="skills-layout" data-reveal>
+      <div>
+        <div class="skill-group">
+          <h3>Sales & Revenue</h3>
+          <div class="skill-tags">
+            <span class="skill-tag gold">Full-Cycle B2B Sales</span>
+            <span class="skill-tag gold">SaaS Sales</span>
+            <span class="skill-tag gold">Lead Generation</span>
+            <span class="skill-tag">Outbound Prospecting</span>
+            <span class="skill-tag">Negotiation & Closing</span>
+            <span class="skill-tag">Value-Based Selling</span>
+            <span class="skill-tag">Revenue Growth</span>
+            <span class="skill-tag">ROAS Optimisation</span>
+          </div>
+        </div>
+        <br/>
+        <div class="skill-group">
+          <h3>Business Development</h3>
+          <div class="skill-tags">
+            <span class="skill-tag gold">Strategic Partnerships</span>
+            <span class="skill-tag">Market Expansion</span>
+            <span class="skill-tag">Client Acquisition</span>
+            <span class="skill-tag">International BD</span>
+            <span class="skill-tag">Stakeholder Management</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group">
+          <h3>Operations & Management</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">CRM Pipeline Management</span>
+            <span class="skill-tag">Sales Forecasting</span>
+            <span class="skill-tag">Client Retention Strategy</span>
+            <span class="skill-tag">Account Management</span>
+            <span class="skill-tag">Team Collaboration</span>
+            <span class="skill-tag">Sales Strategy Design</span>
+          </div>
+        </div>
+        <br/>
+        <div class="skill-group">
+          <h3>Education & Certifications</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">B.Sc. Mathematics</span>
+            <span class="skill-tag">B.Sc. Business Studies</span>
+            <span class="skill-tag">Exec. Diploma — Business Admin</span>
+            <span class="skill-tag">MicroMasters — Business Admin</span>
+            <span class="skill-tag">Agile Scrum</span>
+            <span class="skill-tag">Project Management</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKETS -->
+<section id="markets">
+  <div class="section-inner">
+    <div class="section-label">Geographic Reach</div>
+    <h2>Markets I've <em>Operated In</em></h2>
+    <p class="section-lead">Active sales and business development experience across four international regions — not just familiarity, but real client relationships, closed deals, and ongoing partnerships.</p>
+    <div class="markets-grid" data-reveal>
+      <div class="market-card">
+        <div class="market-flag">🇳🇬</div>
+        <div class="market-name">Nigeria</div>
+        <div class="market-desc">Primary market. B2B telecom, SaaS, and digital product sales across multiple sectors including corporate, SME, and institutional clients.</div>
+      </div>
+      <div class="market-card">
+        <div class="market-flag">🇬🇧</div>
+        <div class="market-name">United Kingdom</div>
+        <div class="market-desc">Partnership development and client relationship management supporting SaaS and technology-focused business development initiatives.</div>
+      </div>
+      <div class="market-card">
+        <div class="market-flag">🇺🇸</div>
+        <div class="market-name">United States</div>
+        <div class="market-desc">International partnership engagement and customer acquisition campaigns targeting US-based clients and organisations.</div>
+      </div>
+      <div class="market-card">
+        <div class="market-flag">🇸🇦</div>
+        <div class="market-name">Middle East</div>
+        <div class="market-desc">Customer acquisition and sales operations across Saudi Arabia and the broader Middle East, with a focus on digital growth campaigns.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section id="approach">
+  <div class="section-inner">
+    <div class="section-label">How I Work</div>
+    <h2>My Sales <em>Approach</em></h2>
+    <div class="approach-grid" data-reveal>
+      <div class="approach-steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-body">
+            <h4>Targeted Prospecting</h4>
+            <p>I build qualified outreach lists based on fit criteria, not volume. Every prospect I contact is one where I understand the use case and can articulate specific value from the first touchpoint.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-body">
+            <h4>Value-Led Discovery</h4>
+            <p>I ask more questions than I give answers in early conversations. Understanding the prospect's actual problem — not assumed pain — is what separates closers from pitch-readers.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-body">
+            <h4>Structured Pipeline Management</h4>
+            <p>Every opportunity lives in a defined stage with a clear next action and a realistic close date. This is how you close 20–35 clients in a month without losing track of a single conversation.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-body">
+            <h4>Retention as Revenue Strategy</h4>
+            <p>Post-sale engagement is not an afterthought. I treat every closed client as the beginning of an account to grow — which is why I sustain 80–85% retention rather than constant re-acquisition.</p>
+          </div>
+        </div>
+      </div>
+      <div class="approach-quote">
+        <blockquote>"The difference between a sales professional and an order-taker is that one builds a system, and the other waits for inbound. I build systems that close deals and keep clients."</blockquote>
+        <cite>— Jefferson Daniel, Sales & Business Development Manager</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label">Get in Touch</div>
+    <h2>Let's <em>Work Together</em></h2>
+    <div class="contact-grid" data-reveal>
+      <div>
+        <p style="font-size:0.95rem;color:var(--mid);line-height:1.8;margin-bottom:32px;font-weight:300;">Whether you're looking for a high-performing sales professional, exploring a business development partnership, or want to discuss a specific opportunity — reach out directly.</p>
+        <div class="contact-info">
+          <div class="contact-row">
+            <span class="icon">✉️</span>
+            <div>
+              <div class="label">Email</div>
+              <div class="value">jeffersonemekadan@gmail.com</div>
+            </div>
+          </div>
+          <div class="contact-row">
+            <span class="icon">📍</span>
+            <div>
+              <div class="label">Location</div>
+              <div class="value">Abuja, Nigeria</div>
+            </div>
+          </div>
+          <div class="contact-row">
+            <span class="icon">🌐</span>
+            <div>
+              <div class="label">LinkedIn</div>
+              <div class="value">linkedin.com/in/jeffersondaniel</div>
+            </div>
+          </div>
+          <div class="contact-row">
+            <span class="icon">🌍</span>
+            <div>
+              <div class="label">Markets</div>
+              <div class="value">Nigeria · UK · USA · Middle East</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <div class="form-row">
+          <input type="text" placeholder="Your Name" />
+          <input type="email" placeholder="Your Email" />
+        </div>
+        <input type="text" placeholder="Subject / Role / Opportunity" />
+        <textarea placeholder="Tell me about the opportunity or what you're looking for..."></textarea>
+        <button type="button">Send Message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="brand">Jefferson Daniel</div>
+  <p>Sales & Business Development Manager · Abuja, Nigeria · Available for international roles</p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('[data-reveal]');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => io.observe(el));
+</script>
+</body>
+</html>
